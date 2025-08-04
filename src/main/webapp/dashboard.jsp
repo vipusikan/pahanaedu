@@ -99,7 +99,7 @@
           <i class="fas fa-user-plus mr-3"></i>
           Add Customer
         </a>
-        <a href="editCustomer.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg mb-2">
+        <a href="viewAccounts.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg mb-2">
           <i class="fas fa-user-edit mr-3"></i>
           Edit Customer
         </a>
