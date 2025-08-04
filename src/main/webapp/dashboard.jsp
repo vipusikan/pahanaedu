@@ -110,7 +110,7 @@
       </div>
       <div class="mb-6">
         <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Inventory</p>
-        <a href="manageItems.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg">
+        <a href="manageInventory.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg">
           <i class="fas fa-boxes mr-3"></i>
           Manage Items
         </a>
