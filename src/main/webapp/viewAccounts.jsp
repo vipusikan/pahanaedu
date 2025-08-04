@@ -47,16 +47,30 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
+    .gray-btn {
+      transition: all 0.2s ease;
+    }
+    .gray-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
   </style>
 </head>
 <body class="min-h-screen">
 <!-- Header -->
+<!-- Header -->
 <header class="bg-white shadow-sm">
   <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-gray-900 flex items-center">
-      <i class="fas fa-users text-primary-600 mr-3"></i>
-      Customer Accounts
-    </h1>
+    <div class="flex items-center space-x-4">
+      <a href="dashboard.jsp" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Dashboard
+      </a>
+      <h1 class="text-2xl font-bold text-gray-900 flex items-center">
+        <i class="fas fa-users text-primary-600 mr-3"></i>
+        Customer Accounts
+      </h1>
+    </div>
     <div class="flex items-center space-x-4">
       <a href="addCustomer.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
         <i class="fas fa-user-plus mr-2"></i>
@@ -82,23 +96,32 @@
       <div class="flex items-center space-x-2">
                     <span class="text-sm text-gray-500">Total:
                         <span class="font-medium">
-                            <%
-                              try {
-                                Class.forName("com.mysql.cj.jdbc.Driver");
-                                Connection countConn = DriverManager.getConnection(
-                                        "jdbc:mysql://localhost:3306/pahanaedu", "root", "Vipu0627");
-                                Statement countStmt = countConn.createStatement();
-                                ResultSet countRs = countStmt.executeQuery("SELECT COUNT(*) FROM customers");
-                                if(countRs.next()) {
-                                  out.print(countRs.getInt(1));
-                                }
-                                countRs.close();
-                                countStmt.close();
-                                countConn.close();
-                              } catch(Exception e) {
-                                out.print("N/A");
-                              }
-                            %>
+                               <%
+                                 try {
+                                   Class.forName("com.mysql.cj.jdbc.Driver");
+                                   Connection countConn = DriverManager.getConnection(
+                                           "jdbc:mysql://localhost:3306/pahanaedu", "root", "Vipu0627");
+
+                                   Statement countStmt = countConn.createStatement();
+                                   ResultSet countRs = countStmt.executeQuery("SELECT COUNT(*) FROM customers");
+
+                                   if (countRs.next()) {
+                                     int customerCount = countRs.getInt(1);
+                               %>
+                              <%= customerCount %>
+                                <%
+                                    }
+
+                                    countRs.close();
+                                    countStmt.close();
+                                    countConn.close();
+
+                                  } catch (Exception e) {
+                                %>
+                                          N/A
+                                  <%
+                                    }
+                                  %>
                         </span>
                     </span>
       </div>
