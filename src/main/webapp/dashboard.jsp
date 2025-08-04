@@ -57,6 +57,22 @@
     }
   </style>
 </head>
+
+<script>
+  window.onload = function () {
+    fetch('customer-count')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById("customerCount").textContent = data.totalCustomers;
+            })
+            .catch(error => {
+              console.error("Failed to load customer count:", error);
+              document.getElementById("customerCount").textContent = "N/A";
+            });
+  };
+</script>
+
+
 <body class="bg-gray-50">
 <!-- Sidebar and Main Content Container -->
 <div class="flex h-screen">
@@ -150,7 +166,7 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm font-medium text-gray-500">Total Customers</p>
-              <p class="text-2xl font-bold text-gray-800 mt-1">1,248</p>
+              <p class="text-2xl font-bold text-gray-800 mt-1" id="customerCount">Loading...</p>
             </div>
             <div class="bg-blue-100 p-3 rounded-full">
               <i class="fas fa-users text-blue-600"></i>
