@@ -58,19 +58,56 @@
   </style>
 </head>
 
+<%--<script>--%>
+<%--  window.onload = function () {--%>
+<%--    fetch('customer-count')--%>
+<%--            .then(response => response.json())--%>
+<%--            .then(data => {--%>
+<%--              document.getElementById("customerCount").textContent = data.totalCustomers;--%>
+<%--            })--%>
+<%--            .catch(error => {--%>
+<%--              console.error("Failed to load customer count:", error);--%>
+<%--              document.getElementById("customerCount").textContent = "N/A";--%>
+<%--            });--%>
+<%--  };--%>
+<%--</script>--%>
+
 <script>
-  window.onload = function () {
+  function loadDashboardCounts() {
+    // ✅ Fetch inventory count as plain text
+    fetch('inventory-count')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('inventoryCount').innerText = data;
+            });
+
+    // ✅ Fetch customer count as JSON
     fetch('customer-count')
             .then(response => response.json())
             .then(data => {
-              document.getElementById("customerCount").textContent = data.totalCustomers;
+              document.getElementById('customerCount').innerText = data.totalCustomers;
             })
             .catch(error => {
               console.error("Failed to load customer count:", error);
-              document.getElementById("customerCount").textContent = "N/A";
+              document.getElementById("customerCount").innerText = "N/A";
             });
-  };
+
+    // ✅ Fetch today’s sales as plain text
+    fetch('today-sales')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('todaySales').innerText = "Rs. " + data;
+            });
+  }
+
+  // Run once on page load
+  window.onload = loadDashboardCounts;
+
+  // Optional: Refresh every 30 seconds
+  setInterval(loadDashboardCounts, 30000);
 </script>
+
+
 
 
 <body class="bg-gray-50">
@@ -166,7 +203,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm font-medium text-gray-500">Total Customers</p>
+<%--              <span class="text-2xl font-bold text-gray-800 mt-1" id="customerCount">0</span>--%>
               <p class="text-2xl font-bold text-gray-800 mt-1" id="customerCount">Loading...</p>
+
             </div>
             <div class="bg-blue-100 p-3 rounded-full">
               <i class="fas fa-users text-blue-600"></i>
@@ -179,7 +218,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm font-medium text-gray-500">Today's Sales</p>
-              <p class="text-2xl font-bold text-gray-800 mt-1">₹54,820</p>
+<%--              <span id="todaySales">0.00</span>--%>
+              <p class="text-2xl font-bold text-gray-800 mt-1" id="todaySales">Loading...</p>
+
             </div>
             <div class="bg-green-100 p-3 rounded-full">
               <i class="fas fa-rupee-sign text-green-600"></i>
@@ -192,7 +233,9 @@
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm font-medium text-gray-500">Inventory Items</p>
-              <p class="text-2xl font-bold text-gray-800 mt-1">487</p>
+              <p class="text-2xl font-bold text-gray-800 mt-1" id="inventoryCount">Loading...</p>
+
+
             </div>
             <div class="bg-purple-100 p-3 rounded-full">
               <i class="fas fa-box-open text-purple-600"></i>
