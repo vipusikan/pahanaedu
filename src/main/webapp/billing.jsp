@@ -61,6 +61,29 @@
         .book-row:hover {
             background-color: #f3f4f6;
         }
+
+        .customer-search-results {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .customer-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .customer-item:hover {
+            background-color: #f3f4f6;
+        }
     </style>
 </head>
 <body class="min-h-screen p-6">
@@ -86,9 +109,27 @@
 
     <!-- Main Content -->
     <div class="p-8">
+        <!-- Customer Search -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Search Customer</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+                <input
+                        type="text"
+                        id="customerSearch"
+                        placeholder="Type customer name..."
+                        class="input-field pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-600"
+                        onkeyup="searchCustomers()"
+                />
+                <div id="customerResults" class="customer-search-results"></div>
+            </div>
+        </div>
+
         <!-- Customer Selection -->
         <div class="mb-8">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Select Customer <span class="text-red-500">*</span></label>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Selected Customer <span class="text-red-500">*</span></label>
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <i class="fas fa-user text-gray-400"></i>
@@ -123,6 +164,7 @@
             </div>
         </div>
 
+        <!-- Rest of your existing code (Book Search, Book Table, Total and Actions) -->
         <!-- Book Search -->
         <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700 mb-2">Search Books</label>
@@ -209,6 +251,59 @@
 </div>
 
 <script>
+    // Customer search functionality
+    function searchCustomers() {
+        const searchTerm = document.getElementById("customerSearch").value.toLowerCase();
+        const resultsContainer = document.getElementById("customerResults");
+
+        if (searchTerm.length < 2) {
+            resultsContainer.style.display = "none";
+            return;
+        }
+
+        // Fetch customers from the dropdown options
+        const customerSelect = document.getElementById("customer");
+        const options = customerSelect.options;
+        const matchingCustomers = [];
+
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value && options[i].text.toLowerCase().includes(searchTerm)) {
+                matchingCustomers.push({
+                    name: options[i].text,
+                    value: options[i].value
+                });
+            }
+        }
+
+        // Display results
+        if (matchingCustomers.length > 0) {
+            resultsContainer.innerHTML = '';
+            matchingCustomers.forEach(customer => {
+                const div = document.createElement("div");
+                div.className = "customer-item";
+                div.textContent = customer.name;
+                div.onclick = function() {
+                    document.getElementById("customer").value = customer.value;
+                    document.getElementById("customerSearch").value = customer.name;
+                    resultsContainer.style.display = "none";
+                };
+                resultsContainer.appendChild(div);
+            });
+            resultsContainer.style.display = "block";
+        } else {
+            resultsContainer.innerHTML = '<div class="customer-item text-gray-500">No customers found</div>';
+            resultsContainer.style.display = "block";
+        }
+    }
+
+    // Close results when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('#customerSearch') && !event.target.closest('#customerResults')) {
+            document.getElementById('customerResults').style.display = 'none';
+        }
+    });
+
+    // Existing functions
     function filterBooks() {
         const searchTerm = document.getElementById("bookSearch").value.toLowerCase();
         const rows = document.querySelectorAll(".book-row");
