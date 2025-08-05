@@ -117,7 +117,7 @@
       </div>
       <div>
         <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Operations</p>
-        <a href="calculateBill.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg mb-2">
+        <a href="billing.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg mb-2">
           <i class="fas fa-file-invoice-dollar mr-3"></i>
           Calculate Bill
         </a>
@@ -231,7 +231,7 @@
             </div>
           </a>
 
-          <a href="calculateBill.jsp" class="dashboard-card bg-white rounded-lg p-6 shadow border-l-4 border-green-500 hover:shadow-md">
+          <a href="billing.jsp" class="dashboard-card bg-white rounded-lg p-6 shadow border-l-4 border-green-500 hover:shadow-md">
             <div class="flex items-start">
               <div class="bg-green-100 p-3 rounded-full mr-4">
                 <i class="fas fa-file-invoice-dollar text-green-600"></i>
@@ -243,7 +243,7 @@
             </div>
           </a>
 
-          <a href="manageItems.jsp" class="dashboard-card bg-white rounded-lg p-6 shadow border-l-4 border-purple-500 hover:shadow-md">
+          <a href="manageInventory.jsp" class="dashboard-card bg-white rounded-lg p-6 shadow border-l-4 border-purple-500 hover:shadow-md">
             <div class="flex items-start">
               <div class="bg-purple-100 p-3 rounded-full mr-4">
                 <i class="fas fa-boxes text-purple-600"></i>
