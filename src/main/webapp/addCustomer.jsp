@@ -249,7 +249,7 @@
                         <i class="fas fa-arrow-left mr-2"></i>
                         Dashboard
                     </a>
-                    <a href="calculateBill.jsp" class="btn inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
+                    <a href="billing.jsp" class="btn inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500">
                         <i class="fas fa-calculator mr-2"></i>
                         Calculate Bill
                     </a>
