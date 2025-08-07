@@ -226,7 +226,7 @@
                 <p class="text-gray-600 text-sm mt-2 line-clamp-2"><%= description %></p>
                 <% } %>
                 <div class="mt-4 flex space-x-2">
-                    <a href="editBook.jsp?id=<%= id %>" class="flex-1 inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <a href="updateBook.jsp?id=<%= id %>" class="flex-1 inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <i class="fas fa-edit mr-2"></i> Edit
                     </a>
                     <a href="deleteBook.jsp?id=<%= id %>" class="flex-1 inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
