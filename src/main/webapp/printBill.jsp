@@ -293,7 +293,7 @@
     </div>
 
     <div class="action-buttons">
-        <a href="javascript:history.back()" class="btn btn-back">← Back to Previous</a>
+        <a href="javascript:history.back()" class="btn btn-back">← Back To Previous</a>
         <button onclick="window.print()" class="btn btn-print">Print Invoice</button>
     </div>
 </div>
