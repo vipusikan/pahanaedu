@@ -142,7 +142,7 @@
         </a>
         <a href="viewAccounts.jsp" class="flex items-center py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-lg">
           <i class="fas fa-address-book mr-3"></i>
-          View Accounts
+          View Accounts.
         </a>
       </div>
       <div class="mb-6">
